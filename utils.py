@@ -13,8 +13,13 @@ def disp_sample_dataset(dataset, label):
     for i, item in enumerate(items):
         plt.subplot(2, 4, i+1)
         plt.axis('off')
+<<<<<<< HEAD
         plt.title(str(label[item][0]) + str(label[item][1:5]))
         plt.imshow(dataset[item,:,:])                   
+=======
+        plt.title(label[i][1:5])
+        plt.imshow(dataset[i,:,:])                   
+>>>>>>> 7cd155506495b6937f2edceae4db7865c4bcdb2b
         
 def accuracy_single(predictions, labels):
     """calculate character-level accuracy"""
