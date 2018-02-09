@@ -15,7 +15,7 @@ def disp_sample_dataset(dataset, label):
         plt.axis('off')
         plt.title(str(label[item][0]) + str(label[item][1:5]))
         plt.imshow(dataset[item,:,:])                   
-        
+
 def accuracy_single(predictions, labels):
     """calculate character-level accuracy"""
     a = np.argmax(predictions, 2).T == labels[:,1:6]
