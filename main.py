@@ -6,6 +6,10 @@ Created on Tue Feb  6 23:16:51 2018
 """
 from preprocess_data import Preprocess
 from digitStructFile import DigitStructFile
+from dataSet import DataSet
+from dataRefine import DataRefine
+import matplotlib.pyplot as plt
+import utils
 
 preprocess = Preprocess()
 preprocess.url = 'http://ufldl.stanford.edu/housenumbers/'
@@ -34,5 +38,18 @@ test_data[0]
 pickle_file = '..\\data\\multi_bbox_info.pickle'
 preprocess.save_pickles(pickle_file, train_data, test_data)
 train_data, test_data = preprocess.load_pickles(pickle_file)
+
+
+
+
 print('Training set', len(train_data))
 print('Test set', len(test_data))
+dataR = DataRefine()
+dataR.make_from_dataset(train_data, test_data, "..\\data")
+
+dataR.save_pickles("..\\data\\multi_crop.pickle")
+dataR2=DataRefine()
+dataR2.load_pickles("..\\data\\multi_crop.pickle")
+print(dataR2.test_labels.shape)
+
+utils.disp_sample_dataset(dataR2.train_dataset, dataR2.train_labels)
