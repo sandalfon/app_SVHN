@@ -48,8 +48,21 @@ dataR = DataRefine()
 dataR.make_from_dataset(train_data, test_data, "..\\data")
 
 dataR.save_pickles("..\\data\\multi_crop.pickle")
+
+
+
 dataR2=DataRefine()
 dataR2.load_pickles("..\\data\\multi_crop.pickle")
 print(dataR2.test_labels.shape)
+print('Training set', dataR2.train_dataset.shape, dataR2.train_labels.shape)
+print('Validation set', dataR2.valid_dataset.shape, dataR2.valid_labels.shape)
+print('Test set', dataR2.test_dataset.shape, dataR2.test_labels.shape)
 
-utils.disp_sample_dataset(dataR2.train_dataset, dataR2.train_labels)
+
+
+
+
+import utils
+image_batch, length_batch, digits_batch = utils.build_batch(
+        dataR2.train_dataset, dataR2.train_labels, 32, True)
+print(length_batch.shape)

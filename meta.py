@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Fri Feb 16 12:13:29 2018
+
+@author: Sandalfon
+"""
+
 import json
 
 
